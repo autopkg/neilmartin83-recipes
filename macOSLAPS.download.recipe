@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of macOSLAPS.</string>
 	<key>Identifier</key>
-	<string>uk.ac.uel.download.macOSLAPS</string>
+	<string>com.github.neilmartin.download.macOSLAPS</string>
 	<key>Input</key>
 	<dict>
 		<key>GITHUB_REPO</key>
