@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads Zotero disk image and builds a package.</string>
     <key>Identifier</key>
-    <string>uk.ac.uel.pkg.Zotero</string>
+    <string>com.github.neilmartin.pkg.Zotero</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
