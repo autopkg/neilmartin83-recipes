@@ -2,12 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Comment</key>
-	<string>Created with Recipe Robot v1.0.5 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
 	<string>Downloads the latest version of macOSLAPS.</string>
 	<key>Identifier</key>
-	<string>com.github.neilmartin.download.macOSLAPS</string>
+	<string>com.github.neilmartin83.download.macOSLAPS</string>
 	<key>Input</key>
 	<dict>
 		<key>GITHUB_REPO</key>
