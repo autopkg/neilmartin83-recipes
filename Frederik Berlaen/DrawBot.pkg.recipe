@@ -16,7 +16,7 @@
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
 	<key>ParentRecipe</key>
-	<string>uk.ac.uel.download.DrawBot</string>
+	<string>com.github.neilmartin83.download.DrawBot</string>
 	<key>Process</key>
 	<array>
 		<dict>
