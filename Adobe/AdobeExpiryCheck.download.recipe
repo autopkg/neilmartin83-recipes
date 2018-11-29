@@ -3,13 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the Adobe Device License Expiry Check tool - https://helpx.adobe.com/enterprise/kb/volume-license-expiration-check.html</string>
+	<string>Downloads the latest version of Aladin Desktop.</string>
 	<key>Identifier</key>
 	<string>com.github.neilmartin83.download.AdobeExpiryCheck</string>
 	<key>Input</key>
 	<dict>
-		<key>DOWNLOAD_URL</key>
-		<string>https://helpx.adobe.com/content/dam/help/en/enterprise/kb/volume-license-expiration-check/jcr_content/main-pars/download_section_473251331/download-2/adobeexpirycheckmac.zip</string>
 		<key>NAME</key>
 		<string>AdobeExpiryCheck</string>
 	</dict>
@@ -20,10 +18,25 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>url</key>
+				<string>https://helpx.adobe.com/enterprise/kb/volume-license-expiration-check.html</string>
+				<key>re_pattern</key>
+				<string>(\/\S*mac.zip)</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>filename</key>
 				<string>%NAME%.zip</string>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<string>https://helpx.adobe.com%match%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
