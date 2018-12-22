@@ -18,6 +18,11 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Arguments</key>
+			<array>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+			</array>
 			<key>Processor</key>
 			<string>Installer</string>
 		</dict>
