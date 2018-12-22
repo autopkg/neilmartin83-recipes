@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of DrawBot and creates a package.</string>
+	<string>Downloads the latest version of ProfileCreator and creates a package.</string>
 	<key>Identifier</key>
 	<string>com.github.neilmartin83.pkg.ProfileCreator</string>
 	<key>Input</key>
