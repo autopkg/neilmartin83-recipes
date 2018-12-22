@@ -11,7 +11,7 @@
 		<key>DOWNLOAD_URL</key>
 		<string>http://s3.amazonaws.com/belightsoft/LabelsAddresses.dmg</string>		
 		<key>NAME</key>
-		<string>Labels and Addresses</string>
+		<string>LabelsandAddresses</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
