@@ -11,7 +11,7 @@
 		<key>BUNDLE_ID</key>
 		<string>com.belightsoft.LabelsAddresses</string>
 		<key>NAME</key>
-		<string>Labels &amp; Addresses</string>
+		<string>Labels and Addresses</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
