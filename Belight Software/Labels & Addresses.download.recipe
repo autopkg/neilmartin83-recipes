@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>LabelsAddresses</string>
+		<string>Labels and Addresses</string>
 		<key>SPARKLE_FEED_URL</key>
 		<string>http://www.belightsoft.com/download/updates/appcast_lna.xml</string>
 	</dict>
