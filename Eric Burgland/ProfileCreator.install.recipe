@@ -21,7 +21,7 @@
 			<key>Arguments</key>
 			<array>
 				<key>pkg_path</key>
-				<string>%pkg_path%</string>
+				<string></string>
 			</array>
 			<key>Processor</key>
 			<string>Installer</string>
