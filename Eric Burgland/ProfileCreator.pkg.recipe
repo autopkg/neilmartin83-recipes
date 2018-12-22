@@ -19,15 +19,15 @@
 	<string>com.github.neilmartin83.download.ProfileCreator</string>
 	<key>Process</key>
 	<array>
-    		<key>Processor</key>
-    		<string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
+    		<dict>
+			<key>Processor</key>
+    			<string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>split_on</key>
 				<string>-beta</string>
 			</dict>
 		</dict>
-
 		<dict>
 			<key>Processor</key>
 			<string>AppPkgCreator</string>
