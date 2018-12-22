@@ -19,10 +19,10 @@
 	<array>
 		<dict>
 			<key>Arguments</key>
-			<array>
+			<dict>
 				<key>pkg_path</key>
-				<string></string>
-			</array>
+				<string>%pkg_path%</string>
+			</dict>
 			<key>Processor</key>
 			<string>Installer</string>
 		</dict>
