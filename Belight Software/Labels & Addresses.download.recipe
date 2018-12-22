@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Labels &amp; Addresses.</string>
+	<string>Downloads the latest version of Labels and Addresses.</string>
 	<key>Identifier</key>
-	<string>com.github.neilmartin83.download.Labels&amp;Addresses</string>
+	<string>com.github.neilmartin83.download.LabelsandAddresses</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
