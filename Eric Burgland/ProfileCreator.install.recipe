@@ -12,7 +12,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.neilmartin83.pkg.ProfileCreator</string>
+	<string>com.github.neilmartin83.download.ProfileCreator</string>
 	<key>Process</key>
 	<array>
 		<dict>
