@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>https://cdn.hasselblad.com/phocus/Phocus.3.4.dmg</string>
+		<string>https://cdn.hasselblad.com/software/Phocus-for-Mac/3.4.3/Phocus-3.4.3.dmg</string>
 		<key>NAME</key>
 		<string>Phocus</string>
 	</dict>
