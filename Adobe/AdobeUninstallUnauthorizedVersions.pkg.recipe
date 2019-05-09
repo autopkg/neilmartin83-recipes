@@ -48,7 +48,7 @@
             	<key>source_path</key>
             	<string>%RECIPE_CACHE_DIR%/unzip/%NAME%/</string>
             	<key>destination_path</key>
-            	<string>%pkgroot%/private/tmp</string>
+            	<string>%pkgroot%/private/tmp/</string>
             </dict>
         </dict>
         <dict>
