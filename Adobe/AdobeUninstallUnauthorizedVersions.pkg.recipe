@@ -46,7 +46,7 @@
             <key>Arguments</key>
             <dict>
             	<key>source_path</key>
-            	<string>%RECIPE_CACHE_DIR%/unzip/%NAME%</string>
+            	<string>%RECIPE_CACHE_DIR%/unzip/UninstallUnauthorizedVersions_mac</string>
             	<key>destination_path</key>
             	<string>%pkgroot%/private/tmp</string>
             	<key>overwrite</key>
