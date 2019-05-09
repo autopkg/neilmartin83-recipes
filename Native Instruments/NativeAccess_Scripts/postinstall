@@ -1,0 +1,33 @@
+#!/bin/bash
+
+launchDaemon="/Library/LaunchDaemons/com.native-instruments.NativeAccess.Helper2.plist"
+helperToolPath="/Library/PrivilegedHelperTools/com.native-instruments.NativeAccess.Helper2"
+helperTool="com.native-instruments.NativeAccess.Helper2"
+
+# Copy the Privileged Helper Tool
+/bin/cp -f "/Applications/Native Access.app/Contents/Library/LaunchServices/$helperTool" "$helperToolPath"
+
+# Check for and delete any pre-existing Launch Daemon
+if [[ -e "$launchDaemon" ]]; then
+	/bin/launchctl unload "$launchDaemon"
+	rm -rf "$launchDaemon"
+fi
+
+# Create the new Launch Daemon
+/usr/libexec/PlistBuddy -c "Add Label string" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Set Label $helperTool" "$launchDaemon"
+
+/usr/libexec/PlistBuddy -c "Add MachServices dict" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Add MachServices:$helperTool bool" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Set MachServices:$helperTool true" "$launchDaemon"
+
+/usr/libexec/PlistBuddy -c "Add Program string" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Set Program $helperToolPath" "$launchDaemon"
+
+/usr/libexec/PlistBuddy -c "Add ProgramArguments array" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Add ProgramArguments:0 string" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Set ProgramArguments:0 $helperToolPath" "$launchDaemon"
+
+/bin/launchctl load "$launchDaemon"
+
+exit 0
