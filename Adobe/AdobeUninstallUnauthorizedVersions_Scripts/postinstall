@@ -1,3 +1,8 @@
 #!/bin/bash
 
+if [[ ! -e "/Library/Logs/Adobe" ]]; then
+	echo "/Library/Logs/Adobe directory does not exist, creating..."
+	mkdir -p "/Library/Logs/Adobe"
+fi
+
 /private/tmp/AdobeCCUninstaller | /usr/bin/tee "/Library/Logs/Adobe/AdobeUninstallUnauthorizedVersions_$(/bin/date +%F-%H%M%S).log"
