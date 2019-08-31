@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://s3.amazonaws.com/belightsoft/LabelsAddresses.dmg</string>		
+		<string>https://s3.amazonaws.com/belightsoft/LabelsAddresses.dmg</string>		
 		<key>NAME</key>
 		<string>LabelsandAddresses</string>
 	</dict>
