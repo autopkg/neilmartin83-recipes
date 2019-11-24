@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Phocus.</string>
+	<string>Downloads the specified version of Phocus.</string>
 	<key>Identifier</key>
 	<string>com.github.neilmartin83.download.Phocus</string>
 	<key>Input</key>
