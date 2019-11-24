@@ -8,8 +8,10 @@
 	<string>com.github.neilmartin83.download.Phocus</string>
 	<key>Input</key>
 	<dict>
+		<key>PHOCUS_VERSION</KEY>
+		<string>3.4.5</string>
 		<key>DOWNLOAD_URL</key>
-		<string>https://cdn.hasselblad.com/software/Phocus-for-Mac/3.4.4/Phocus-3.4.4.dmg</string>
+		<string>https://cdn.hasselblad.com/software/Phocus-for-Mac/%PHOCUS_VERSION%/Phocus-%PHOCUS_VERSION%.dmg</string>
 		<key>NAME</key>
 		<string>Phocus</string>
 	</dict>
