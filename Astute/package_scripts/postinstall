@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Astute Manager postinstall
+
+/bin/cp -f "$3/Applications/Astute Manager.app/Contents/Library/LaunchServices/com.astutegraphics.deployment" "$3/Library/PrivilegedHelperTools/"
+/usr/sbin/chown root:wheel "$3/Library/PrivilegedHelperTools/com.astutegraphics.deployment"
+/bin/chmod 544 "$3/Library/PrivilegedHelperTools/com.astutegraphics.deployment"
+
+/bin/rm "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" # In case Pro Tools has been updated from a previous version
+ 
+/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" Label -string com.astutegraphics.deployment
+/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" MachServices -dict com.astutegraphics.deployment -bool true
+/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" Program -string /Library/PrivilegedHelperTools/com.astutegraphics.deployment
+/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" ProgramArguments -array /Library/PrivilegedHelperTools/com.astutegraphics.deployment
+/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" StandardErrorPath -string /tmp/com.astutegraphics.deployment.log
+/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" StandardOutPath -string /tmp/com.astutegraphics.deployment.log
+
+/bin/chmod 644 "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
+/bin/launchctl load "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
