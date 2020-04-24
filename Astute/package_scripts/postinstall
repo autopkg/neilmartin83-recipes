@@ -1,7 +1,7 @@
 #/bin/bash
 launchDaemon="$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
 helperTool="com.astutegraphics.deployment"
-helperToolPath="/Library/PrivilegedHelperTools/$helperTool"
+helperToolPath="/Library/PrivilegedHelperTools/com.astutegraphics.deployment"
 logPath="/tmp/com.astutegraphics.deployment.log"
 
 # Copy the Privileged Helper Tool
