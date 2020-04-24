@@ -1,19 +1,38 @@
-#!/bin/bash
+#/bin/bash
+launchDaemon="$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
+helperTool="com.astutegraphics.deployment"
+helperToolPath="/Library/PrivilegedHelperTools/$helperTool"
+logPath="/tmp/com.astutegraphics.deployment.log"
 
-# Astute Manager postinstall
+# Copy the Privileged Helper Tool
+/bin/cp -f "$3/Applications/Astute Manager.app/Contents/Library/LaunchServices/$helperTool" "$helperToolPath"
 
-/bin/cp -f "$3/Applications/Astute Manager.app/Contents/Library/LaunchServices/com.astutegraphics.deployment" "$3/Library/PrivilegedHelperTools/"
-/usr/sbin/chown root:wheel "$3/Library/PrivilegedHelperTools/com.astutegraphics.deployment"
-/bin/chmod 544 "$3/Library/PrivilegedHelperTools/com.astutegraphics.deployment"
+# Check for and delete any pre-existing Launch Daemon
+if [[ -e "$launchDaemon" ]]; then
+	/bin/launchctl unload "$launchDaemon"
+	rm -rf "$launchDaemon"
+fi
 
-/bin/rm "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" # In case Pro Tools has been updated from a previous version
- 
-/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" Label -string com.astutegraphics.deployment
-/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" MachServices -dict com.astutegraphics.deployment -bool true
-/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" Program -string /Library/PrivilegedHelperTools/com.astutegraphics.deployment
-/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" ProgramArguments -array /Library/PrivilegedHelperTools/com.astutegraphics.deployment
-/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" StandardErrorPath -string /tmp/com.astutegraphics.deployment.log
-/usr/bin/defaults write "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" StandardOutPath -string /tmp/com.astutegraphics.deployment.log
+# Create the new Launch Daemon
+/usr/libexec/PlistBuddy -c "Add Label string" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Set Label $helperTool" "$launchDaemon"
 
-/bin/chmod 644 "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
-/bin/launchctl load "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
+/usr/libexec/PlistBuddy -c "Add MachServices dict" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Add MachServices:$helperTool bool" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Set MachServices:$helperTool true" "$launchDaemon"
+
+/usr/libexec/PlistBuddy -c "Add Program string" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Set Program $helperToolPath" "$launchDaemon"
+
+/usr/libexec/PlistBuddy -c "Add ProgramArguments array" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Add ProgramArguments:0 string" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Set ProgramArguments:0 $helperToolPath" "$launchDaemon"
+
+/usr/libexec/PlistBuddy -c "Add StandardErrorPath string" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Set StandardErrorPath $logPath" "$launchDaemon"
+
+/usr/libexec/PlistBuddy -c "Add StandardOutPath string" "$launchDaemon"
+/usr/libexec/PlistBuddy -c "Set StandardOutPath $logPath" "$launchDaemon"
+
+
+/bin/launchctl load "$launchDaemon"
