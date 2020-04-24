@@ -5,7 +5,7 @@ helperToolPath="/Library/PrivilegedHelperTools/com.astutegraphics.deployment"
 logPath="/tmp/com.astutegraphics.deployment.log"
 
 # Copy the Privileged Helper Tool
-/bin/cp -f "$3/Applications/Astute Manager.app/Contents/Library/LaunchServices/$helperTool" "$helperToolPath"
+/bin/cp -f "$3/Applications/Astute Manager.app/Contents/Library/LaunchServices/$helperTool" "$3"/"$helperToolPath"
 
 # Check for and delete any pre-existing Launch Daemon
 if [[ -e "$launchDaemon" ]]; then
