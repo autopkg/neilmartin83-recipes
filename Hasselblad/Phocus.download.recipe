@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>PHOCUS_VERSION</key>
-		<string>3.4.6</string>
+		<string>3.5</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://cdn.hasselblad.com/software/Phocus-for-Mac/%PHOCUS_VERSION%/Phocus-%PHOCUS_VERSION%.dmg</string>
 		<key>NAME</key>
