@@ -5,7 +5,7 @@
         <key>Description</key>
         <string>Downloads the latest version of RecipeBuilder</string>
         <key>Identifier</key>
-        <string>com.github.dataJAR-recipes.download.RecipeBuilder</string>
+        <string>com.github.neilmartin83.download.RecipeBuilder</string>
         <key>Input</key>
         <dict>
             <key>NAME</key>

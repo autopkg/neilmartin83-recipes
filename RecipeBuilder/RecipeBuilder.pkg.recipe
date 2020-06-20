@@ -5,7 +5,7 @@
         <key>Description</key>
         <string>Downloads the latest version of RecipeBuilder and creates a package</string>
         <key>Identifier</key>
-        <string>com.github.dataJAR-recipes.pkg.RecipeBuilder</string>
+        <string>com.github.neilmartin83.pkg.RecipeBuilder</string>
         <key>Input</key>
         <dict>
             <key>NAME</key>
@@ -14,7 +14,7 @@
         <key>MinimumVersion</key>
         <string>0.5.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.dataJAR-recipes.download.RecipeBuilder</string>
+        <string>com.github.neilmartin83.download.RecipeBuilder</string>
         <key>Process</key>
         <array>
             <dict>

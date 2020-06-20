@@ -5,7 +5,7 @@
         <key>Description</key>
         <string>Downloads the latest version of RecipeBuilder and then uploads to the JSS</string>
         <key>Identifier</key>
-        <string>com.github.dataJAR-recipes.jss.RecipeBuilder</string>
+        <string>com.github.neilmartin83.jss.RecipeBuilder</string>
         <key>Input</key>
         <dict>
             <key>CATEGORY</key>
@@ -28,7 +28,7 @@
         <key>MinimumVersion</key>
         <string>0.6.1</string>
         <key>ParentRecipe</key>
-        <string>com.github.dataJAR-recipes.pkg.RecipeBuilder</string>
+        <string>com.github.neilmartin83.pkg.RecipeBuilder</string>
         <key>Process</key>
         <array>
             <dict>
