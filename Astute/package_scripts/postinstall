@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Astute Manager postinstall
+
+if [[ -e "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist" ]]; then
+	/bin/launchctl unload "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
+	/bin/rm -f "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
+fi
+
+/bin/cp -f "$3/Applications/Astute Manager.app/Contents/Library/LaunchServices/com.astutegraphics.deployment" "$3/Library/PrivilegedHelperTools/"
+/usr/sbin/chown root:wheel "$3/Library/PrivilegedHelperTools/com.astutegraphics.deployment"
+/bin/chmod 544 "$3/Library/PrivilegedHelperTools/com.astutegraphics.deployment"
+
+cat << EOF > "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.astutegraphics.deployment</string>
+	<key>MachServices</key>
+	<dict>
+		<key>com.astutegraphics.deployment</key>
+		<true/>
+	</dict>
+	<key>Program</key>
+	<string>/Library/PrivilegedHelperTools/com.astutegraphics.deployment</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Library/PrivilegedHelperTools/com.astutegraphics.deployment</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/tmp/com.astutegraphics.deployment.log</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/com.astutegraphics.deployment.log</string>
+</dict>
+</plist>
+EOF
+
+/bin/chmod 644 "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
+/bin/launchctl load "$3/Library/LaunchDaemons/com.astutegraphics.deployment.plist"
