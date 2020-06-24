@@ -2,27 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Description</key>
-	<string>Downloads the latest version of Phocus and creates a package.</string>
-	<key>Identifier</key>
-	<string>com.github.neilmartin83.pkg.Phocus</string>
-	<key>Input</key>
-	<dict>
-		<key>BUNDLE_ID</key>
-		<string>dk.hasselblad.phocus</string>
-		<key>NAME</key>
-		<string>Phocus</string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>1.0.0</string>
-	<key>ParentRecipe</key>
-	<string>com.github.neilmartin83.download.Phocus</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Processor</key>
-			<string>AppPkgCreator</string>
-		</dict>
-	</array>
+    <key>Description</key>
+    <string>Downloads the latest version of Phocus and creates a package.</string>
+    <key>Identifier</key>
+    <string>com.github.neilmartin83.pkg.Phocus</string>
+    <key>Input</key>
+    <dict>
+        <key>BUNDLE_ID</key>
+        <string>dk.hasselblad.phocus</string>
+        <key>NAME</key>
+        <string>Phocus</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.neilmartin83.download.Phocus</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>AppPkgCreator</string>
+        </dict>
+    </array>
 </dict>
 </plist>
