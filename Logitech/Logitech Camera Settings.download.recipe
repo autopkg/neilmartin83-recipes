@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest verison of Logitech Camera Settings.</string>
+    <string>Downloads the latest version of Logitech Camera Settings.</string>
     <key>Identifier</key>
     <string>com.github.neilmartin83-recipes.download.Logitech Camera Settings</string>
     <key>Input</key>
