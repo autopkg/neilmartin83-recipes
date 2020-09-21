@@ -35,7 +35,7 @@
     <key>MinimumVersion</key>
     <string>0.5.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.dataJAR-Recipes.download.VMPK</string>
+    <string>com.github.neilmartin83-recipes.download.VMPK</string>
     <key>Process</key>
     <array>
         <dict>
