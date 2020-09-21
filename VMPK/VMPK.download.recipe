@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest version of VMPK</string>
     <key>Identifier</key>
-    <string>com.github.dataJAR-Recipes.download.VMPK</string>
+    <string>com.github.neilmartin83-recipes.download.VMPK</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
