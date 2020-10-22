@@ -19,11 +19,9 @@
             <key>Arguments</key>
             <dict>
                 <key>re_pattern</key>
-                <string>UPDATE ([^&lt;\s]*)</string>
-                <key>result_output_var_name</key>
-                <string>PHOCUS_VERSION</string>
+                <string>https:\/\/cdn\.hasselblad\.com\/software\/Phocus-for-Mac\/\S*\/Phocus-\S*\.dmg</string>
                 <key>url</key>
-                <string>https://www.hasselblad.com/phocus/</string>
+                <string>https://api.hasselblad.com/products/downloads/133</string>
             </dict>
             <key>Processor</key>
             <string>URLTextSearcher</string>
@@ -34,7 +32,7 @@
                 <key>filename</key>
                 <string>%NAME%.dmg</string>
                 <key>url</key>
-                <string>https://cdn.hasselblad.com/software/Phocus-for-Mac/%PHOCUS_VERSION%/Phocus-%PHOCUS_VERSION%.dmg</string>
+                <string>%match%</string>
             </dict>
             <key>Processor</key>
             <string>URLDownloader</string>
