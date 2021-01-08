@@ -21,7 +21,7 @@
 				<key>filename</key>
 				<string>%NAME%.zip</string>
 				<key>url</key>
-				<string>http://download.adobe.com/pub/adobe/creativecloud/UninstallUnauthorizedVersions_mac.zip</string>
+				<string>https://download.adobe.com/pub/adobe/creativecloud/UninstallUnauthorizedVersions_mac.zip</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>

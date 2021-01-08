@@ -9,7 +9,7 @@
     <key>Input</key>
     <dict>
         <key>DOWNLOAD_URL</key>
-        <string>http://files.astutegraphics.com/AstuteManager.dmg</string>      
+        <string>https://files.astutegraphics.com/AstuteManager.dmg</string>      
         <key>NAME</key>
         <string>AstuteManager</string>
     </dict>
