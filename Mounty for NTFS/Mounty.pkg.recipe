@@ -8,8 +8,6 @@
 	<string>com.github.neilmartin83.pkg.Mounty</string>
 	<key>Input</key>
 	<dict>
-		<key>BUNDLE_ID</key>
-		<string>com.mounty</string>
 		<key>NAME</key>
 		<string>Mounty</string>
 	</dict>

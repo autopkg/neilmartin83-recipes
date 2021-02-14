@@ -8,8 +8,6 @@
 	<string>com.github.neilmartin83.pkg.ProfileCreator</string>
 	<key>Input</key>
 	<dict>
-		<key>BUNDLE_ID</key>
-		<string>com.github.erikberglund.ProfileCreator</string>
 		<key>NAME</key>
 		<string>ProfileCreator</string>
 	</dict>
@@ -19,14 +17,14 @@
 	<string>com.github.neilmartin83.download.ProfileCreator</string>
 	<key>Process</key>
 	<array>
-    		<dict>
-			<key>Processor</key>
-    			<string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>split_on</key>
 				<string>-beta</string>
 			</dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
