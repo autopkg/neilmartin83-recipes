@@ -18,6 +18,8 @@
         <key>Process</key>
         <array>
             <dict>
+                <key>Processor</key>
+                <string>URLDownloader</string>
                 <key>Arguments</key>
                 <dict>
                     <key>filename</key>
@@ -25,36 +27,34 @@
                     <key>url</key>
                     <string>%DOWNLOAD_URL%</string>
                 </dict>
-                <key>Processor</key>
-                <string>URLDownloader</string>
             </dict>
             <dict>
                 <key>Processor</key>
                 <string>EndOfCheckPhase</string>
             </dict>
             <dict>
+                <key>Processor</key>
+                <string>Unarchiver</string>
                 <key>Arguments</key>
                 <dict>
                     <key>archive_path</key>
                     <string>%pathname%</string>
                     <key>destination_path</key>
-                    <string>%RECIPE_CACHE_DIR%/unzip</string>
+                    <string>%RECIPE_CACHE_DIR%/Applications</string>
                     <key>purge_destination</key>
                     <true></true>
                 </dict>
-                <key>Processor</key>
-                <string>Unarchiver</string>
             </dict>
             <dict>
+                <key>Processor</key>
+                <string>CodeSignatureVerifier</string>
                 <key>Arguments</key>
                 <dict>
                     <key>input_path</key>
-                    <string>%RECIPE_CACHE_DIR%/unzip/%NAME%.app</string>
+                    <string>%RECIPE_CACHE_DIR%/Applications/Nucleo.app</string>
                     <key>requirement</key>
-                    <string>identifier "co.ambercreativelab.nucleo" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = KL2E79V8DF</string>
+                    <string>identifier "co.ambercreative.nucleo" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "62YXLY7NMM"</string>
                 </dict>
-                <key>Processor</key>
-                <string>CodeSignatureVerifier</string>
             </dict>
         </array>
     </dict>
