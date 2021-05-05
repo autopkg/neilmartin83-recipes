@@ -8,8 +8,6 @@
 	<string>com.github.neilmartin83.pkg.intiface-desktop</string>
 	<key>Input</key>
 	<dict>
-		<key>BUNDLE_ID</key>
-		<string>com.nonpolynomiallabs.intiface-desktop</string>
 		<key>NAME</key>
 		<string>intiface-desktop</string>
 	</dict>

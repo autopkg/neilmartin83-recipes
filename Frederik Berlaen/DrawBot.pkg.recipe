@@ -8,8 +8,6 @@
 	<string>com.github.neilmartin83.pkg.DrawBot</string>
 	<key>Input</key>
 	<dict>
-		<key>BUNDLE_ID</key>
-		<string>com.drawbot</string>
 		<key>NAME</key>
 		<string>DrawBot</string>
 	</dict>

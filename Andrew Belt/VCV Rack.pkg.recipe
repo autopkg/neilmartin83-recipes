@@ -8,8 +8,6 @@
 	<string>com.github.neilmartin83.pkg.VCVRack</string>
 	<key>Input</key>
 	<dict>
-		<key>BUNDLE_ID</key>
-		<string>com.vcvrack.rack</string>
 		<key>NAME</key>
 		<string>VCV_Rack</string>
 	</dict>
