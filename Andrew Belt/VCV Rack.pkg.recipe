@@ -21,11 +21,22 @@
 			<key>Arguments</key>
 			<dict>
 				<key>app_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Rack.app</string>
+				<string>%destination_path%/Rack.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>AppPkgCreator</string>
 		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>path_list</key>
+                <array>
+                    <string>%destination_path%</string>
+                </array>
+            </dict>
+        </dict>
 	</array>
 </dict>
 </plist>
