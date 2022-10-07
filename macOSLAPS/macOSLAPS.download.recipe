@@ -43,11 +43,11 @@
 			<key>Arguments</key>
 			<dict>
 				<key>expected_authority_names</key>
-                <array>
-                    <string>Developer ID Installer: Joshua Miller (9UYK4F9BSM)</string>
-                    <string>Developer ID Certification Authority</string>
-                    <string>Apple Root CA</string>
-                </array>
+				<array>
+					<string>Developer ID Installer: Joshua Miller (9UYK4F9BSM)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
 				<key>input_path</key>
 				<string>%pathname%</string>
 			</dict>

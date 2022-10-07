@@ -7,10 +7,10 @@
 	<key>Identifier</key>
 	<string>com.github.neilmartin83.install.ProfileCreator</string>
 	<key>Input</key>
-		<dict>
-			<key>NAME</key>
-			<string>ProfileCreator</string>
-		</dict>
+	<dict>
+		<key>NAME</key>
+		<string>ProfileCreator</string>
+	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
