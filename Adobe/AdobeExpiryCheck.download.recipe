@@ -29,6 +29,19 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>url</key>
+				<string>https://helpx.adobe.com/enterprise/kb/volume-license-expiration-check.html</string>
+				<key>re_pattern</key>
+				<string>&lt;em&gt;v(\S*)&lt;\/em&gt;</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>filename</key>
 				<string>%NAME%.zip</string>
 				<key>url</key>

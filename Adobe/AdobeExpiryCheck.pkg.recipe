@@ -51,6 +51,17 @@
             	<string>%pkgroot%/usr/local/bin</string>
             </dict>
         </dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.mlbz521.SharedProcessors/FileMode</string>
+			<key>Arguments</key>
+			<dict>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%pkgroot%/usr/local/bin/AdobeExpiryCheck</string>
+			</dict>
+		</dict>
         <dict>
             <key>Processor</key>
             <string>PkgCreator</string>
@@ -63,7 +74,7 @@
                     <key>pkgdir</key>
                     <string>%RECIPE_CACHE_DIR%</string>
 					<key>version</key>
-                    <string>1.0</string>
+                    <string>%version%</string>
                     <key>id</key>
                     <string>com.adobe.AdobeExpiryCheck</string>
                     <key>options</key>
