@@ -10,6 +10,8 @@
 	<dict>
 		<key>GITHUB_REPO</key>
 		<string>joshua-d-miller/macOSLAPS</string>
+		<key>INCLUDE_PRERELEASES</key>
+		<string></string>
 		<key>NAME</key>
 		<string>macOSLAPS</string>
 	</dict>
@@ -22,6 +24,8 @@
 			<dict>
 				<key>github_repo</key>
 				<string>%GITHUB_REPO%</string>
+				<key>include_prereleases</key>
+				<string>%INCLUDE_PRERELEASES%</string>
 			</dict>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>
