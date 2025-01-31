@@ -1,0 +1,10 @@
+Description: Downloads the latest version of Mounty and creates a package.
+Identifier: com.github.neilmartin83.pkg.Mounty
+ParentRecipe: com.github.andrewvalentine.download.Mounty
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: Mounty
+
+Process:
+- Processor: AppPkgCreator

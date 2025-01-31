@@ -1,0 +1,48 @@
+Description: Downloads the latest version of Logitech Camera Settings and imports it into Munki.
+Identifier: com.github.neilmartin83-recipes.munki.Logitech Camera Settings
+ParentRecipe: com.github.neilmartin83-recipes.download.Logitech Camera Settings
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: Logitech Camera Settings
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+    - testing
+    description: Provides easy access to camera controls.
+    developer: Logitech
+    display_name: Logitech Camera Settings
+    name: '%NAME%'
+    unattended_install: true
+    unattended_uninstall: true
+
+Process:
+- Processor: FlatPkgUnpacker
+  Arguments:
+    destination_path: '%RECIPE_CACHE_DIR%/unpack'
+    flat_pkg_path: '%pathname%'
+
+- Processor: PkgPayloadUnpacker
+  Arguments:
+    destination_path: '%RECIPE_CACHE_DIR%/pkgroot/Applications/'
+    pkg_payload_path: '%RECIPE_CACHE_DIR%/unpack/LogiCameraSettings_app.pkg/Payload'
+    purge_destination: true
+
+- Processor: MunkiInstallsItemsCreator
+  Arguments:
+    faux_root: '%RECIPE_CACHE_DIR%/pkgroot'
+    installs_item_paths:
+    - /Applications/Camera Settings.app
+
+- Processor: MunkiPkginfoMerger
+
+- Processor: MunkiImporter
+  Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+
+- Processor: PathDeleter
+  Arguments:
+    path_list:
+    - '%RECIPE_CACHE_DIR%/pkgroot'
+    - '%RECIPE_CACHE_DIR%/unpack'

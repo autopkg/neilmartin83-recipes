@@ -1,0 +1,25 @@
+Description: Downloads the Adobe Device License Expiry Check tool - https://helpx.adobe.com/enterprise/kb/volume-license-expiration-check.html
+Identifier: com.github.neilmartin83.download.AdobeExpiryCheck
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: AdobeExpiryCheck
+
+Process:
+- Processor: URLTextSearcher
+  Arguments:
+    re_pattern: (\/\S*mac.zip)
+    url: https://helpx.adobe.com/enterprise/kb/volume-license-expiration-check.html
+
+- Processor: URLTextSearcher
+  Arguments:
+    re_pattern: <em>v(\S*)<\/em>
+    result_output_var_name: version
+    url: https://helpx.adobe.com/enterprise/kb/volume-license-expiration-check.html
+
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%.zip'
+    url: https://helpx.adobe.com%match%
+
+- Processor: EndOfCheckPhase

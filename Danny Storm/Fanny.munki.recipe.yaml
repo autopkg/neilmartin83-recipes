@@ -1,0 +1,23 @@
+Description: Downloads the latest version of Fanny and imports into Munki
+Identifier: com.github.neilmartin83.munki.Fanny
+ParentRecipe: com.github.neilmartin83.pkg.Fanny
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: Fanny
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+    - testing
+    description: Fanny is a free Notification Center Widget and Menu Bar application to monitor your Macs fans.
+    developer: Daniel Storm
+    display_name: Fanny
+    name: '%NAME%'
+    unattended_install: true
+    unattended_uninstall: true
+
+Process:
+- Processor: MunkiImporter
+  Arguments:
+    pkg_path: '%pkg_path%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'

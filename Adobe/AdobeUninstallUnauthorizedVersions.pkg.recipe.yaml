@@ -1,0 +1,38 @@
+Description: Packages the Unauthorized Versions Uninstaller tool so it will install in /private/tmp and adds a postinstall script to run it
+Identifier: com.github.neilmartin83.pkg.AdobeUninstallUnauthorizedVersions
+ParentRecipe: com.github.neilmartin83.download.AdobeUninstallUnauthorizedVersions
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: AdobeUninstallUnauthorizedVersions
+
+Process:
+- Processor: PkgRootCreator
+  Arguments:
+    pkgdirs:
+      private/tmp: '0775'
+    pkgroot: '%RECIPE_CACHE_DIR%/%NAME%'
+
+- Processor: Unarchiver
+  Arguments:
+    destination_path: '%RECIPE_CACHE_DIR%/unzip'
+
+- Processor: Copier
+  Arguments:
+    destination_path: '%pkgroot%/private/tmp'
+    overwrite: true
+    source_path: '%RECIPE_CACHE_DIR%/unzip/UninstallUnauthorizedVersions_mac'
+
+- Processor: PkgCreator
+  Arguments:
+    pkg_request:
+      chown:
+      - group: wheel
+        path: private
+        user: root
+      id: com.adobe.AdobeUninstallUnauthorizedVersions
+      options: purge_ds_store
+      pkgdir: '%RECIPE_CACHE_DIR%'
+      pkgname: '%NAME%'
+      scripts: AdobeUninstallUnauthorizedVersions_Scripts
+      version: '1.0'

@@ -1,0 +1,10 @@
+Description: Downloads the latest version of Phocus and creates a package.
+Identifier: com.github.neilmartin83.pkg.Phocus
+ParentRecipe: com.github.neilmartin83.download.Phocus
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: Phocus
+
+Process:
+- Processor: AppPkgCreator

@@ -1,0 +1,16 @@
+Description: Downloads the latest version of VMPK
+Identifier: com.github.neilmartin83-recipes.download.VMPK
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: VMPK
+
+Process:
+- Processor: com.github.jessepeterson.munki.GrandPerspective/SourceForgeURLProvider
+  Arguments:
+    SOURCEFORGE_FILE_PATTERN: vmpk-\S*-mac-x64\.dmg
+    SOURCEFORGE_PROJECT_NAME: vmpk
+
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%.dmg'

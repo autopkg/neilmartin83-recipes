@@ -1,0 +1,29 @@
+Description: Downloads the specified version of Phocus.
+Identifier: com.github.neilmartin83.download.Phocus
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: Phocus
+
+Process:
+- Processor: URLTextSearcher
+  Arguments:
+    re_pattern: https:\/\/cdn\.hasselblad\.com\/software\/Phocus_for_Mac\/\S*\/Phocus-\S*\.dmg
+    url: https://api.hasselblad.com/products/downloads/133
+
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%.dmg'
+    url: '%match%'
+
+- Processor: EndOfCheckPhase
+
+- Processor: CodeSignatureVerifier
+  Arguments:
+    input_path: '%pathname%/Phocus.app'
+    requirement: anchor apple generic and identifier "dk.hasselblad.phocus" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "56UFF38UTM")
+
+- Processor: Versioner
+  Arguments:
+    input_plist_path: '%pathname%/Phocus.app/Contents/Info.plist'
+    plist_version_key: CFBundleShortVersionString

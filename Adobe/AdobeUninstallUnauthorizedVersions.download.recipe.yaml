@@ -1,0 +1,14 @@
+Description: Downloads the Unauthorised Versions Uninstaller tool - https://helpx.adobe.com/enterprise/kb/remove-unauthorized-versions.html
+Identifier: com.github.neilmartin83.download.AdobeUninstallUnauthorizedVersions
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: AdobeUninstallUnauthorizedVersions
+
+Process:
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%.zip'
+    url: https://download.adobe.com/pub/adobe/creativecloud/UninstallUnauthorizedVersions_mac.zip
+
+- Processor: EndOfCheckPhase

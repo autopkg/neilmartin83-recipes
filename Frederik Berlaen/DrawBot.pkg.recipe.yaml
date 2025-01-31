@@ -1,0 +1,10 @@
+Description: Downloads the latest version of DrawBot and creates a package.
+Identifier: com.github.neilmartin83.pkg.DrawBot
+ParentRecipe: com.github.neilmartin83.download.DrawBot
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: DrawBot
+
+Process:
+- Processor: AppPkgCreator

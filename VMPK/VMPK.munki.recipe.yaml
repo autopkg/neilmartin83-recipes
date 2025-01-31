@@ -1,0 +1,23 @@
+Description: Downloads the latest version of VMPK and imports into Munki
+Identifier: com.github.neilmartin83-recipes.munki.VMPK
+ParentRecipe: com.github.neilmartin83-recipes.download.VMPK
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: VMPK
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+    - testing
+    description: Virtual MIDI Piano Keyboard is a MIDI events generator and receiver.
+    developer: Pedro Lopez-Cabanillas
+    display_name: VMPK
+    name: '%NAME%'
+    unattended_install: true
+    unattended_uninstall: true
+
+Process:
+- Processor: MunkiImporter
+  Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'

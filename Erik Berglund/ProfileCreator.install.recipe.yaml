@@ -1,0 +1,12 @@
+Description: Downloads and installs the current release version of ProfileCreator.
+Identifier: com.github.neilmartin83.install.ProfileCreator
+ParentRecipe: com.github.neilmartin83.pkg.ProfileCreator
+MinimumVersion: 0.6.1
+
+Input:
+  NAME: ProfileCreator
+
+Process:
+- Processor: Installer
+  Arguments:
+    pkg_path: '%pkg_path%'

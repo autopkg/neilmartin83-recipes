@@ -1,0 +1,59 @@
+Description: Downloads the latest version of Nessus Agent and creates a package
+Identifier: com.github.neilmartin83-recipes.pkg.Nessus Agent
+ParentRecipe: com.github.neilmartin83-recipes.download.Nessus Agent
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: Nessus Agent
+
+Process:
+- Processor: PkgRootCreator
+  Arguments:
+    pkgdirs: {}
+    pkgroot: '%RECIPE_CACHE_DIR%/pkgroot'
+
+- Processor: PkgRootCreator
+  Arguments:
+    pkgdirs: {}
+    pkgroot: '%RECIPE_CACHE_DIR%/Scripts'
+
+- Processor: Copier
+  Arguments:
+    destination_path: '%RECIPE_CACHE_DIR%/Scripts/%dmg_found_filename%'
+    overwrite: true
+    source_path: '%pathname%/%dmg_found_filename%'
+
+- Processor: FileCreator
+  Arguments:
+    file_content: |
+      #!/bin/bash
+                      
+      # Determine working directory
+      installDir=$(dirname $0)
+      
+      #
+      # Installing Nessus Agent
+      #
+      
+      # Install the Nessus Agent software
+      pkgInstaller="${installDir}/%dmg_found_filename%"
+      /usr/sbin/installer -dumplog -verbose -pkg "${pkgInstaller}" -target "${3}"
+      
+    file_mode: '0755'
+    file_path: '%RECIPE_CACHE_DIR%/Scripts/postinstall'
+
+- Processor: PkgCreator
+  Arguments:
+    pkg_request:
+      id: com.tenablesecurity.NessusAgent.pkg
+      pkgname: '%NAME%-%version%'
+      pkgroot: '%RECIPE_CACHE_DIR%/pkgroot'
+      pkgtype: flat
+      scripts: Scripts
+      version: '%version%'
+
+- Processor: PathDeleter
+  Arguments:
+    path_list:
+    - '%RECIPE_CACHE_DIR%/pkgroot'
+    - '%RECIPE_CACHE_DIR%/Scripts'

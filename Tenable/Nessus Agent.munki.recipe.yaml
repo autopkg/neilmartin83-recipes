@@ -1,0 +1,23 @@
+Description: Downloads the latest version of Nessus Agent and imports into Munki
+Identifier: com.github.neilmartin83-recipes.munki.Nessus Agent
+ParentRecipe: com.github.neilmartin83-recipes.pkg.Nessus Agent
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: Nessus Agent
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+    - testing
+    description: "Nessus Agents are lightweight programs installed locally on a host \u2013 a laptop, virtual system, desktop, and/or server. Agents receive scanning instructions from a central Nessus Manager server, perform scans locally, and report vulnerability, compliance and system results back to the central server."
+    developer: Tenable
+    display_name: Nessus Agent
+    name: '%NAME%'
+    unattended_install: true
+    unattended_uninstall: true
+
+Process:
+- Processor: MunkiImporter
+  Arguments:
+    pkg_path: '%pkg_path%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'

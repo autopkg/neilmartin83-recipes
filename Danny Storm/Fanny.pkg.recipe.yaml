@@ -1,0 +1,22 @@
+Description: Downloads the latest version of Fanny and creates a package
+Identifier: com.github.neilmartin83.pkg.Fanny
+ParentRecipe: com.github.neilmartin83.download.Fanny
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: Fanny
+
+Process:
+- Processor: FileFinder
+  Arguments:
+    pattern: '%RECIPE_CACHE_DIR%/unzip/*/Fanny.app'
+
+- Processor: Versioner
+  Arguments:
+    input_plist_path: '%found_filename%/Contents/Info.plist'
+    plist_version_key: CFBundleShortVersionString
+
+- Processor: AppPkgCreator
+  Arguments:
+    app_path: '%found_filename%'
+    pkg_path: '%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg'

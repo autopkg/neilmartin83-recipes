@@ -1,0 +1,41 @@
+Description: Packages the Adobe Device License Expiry Check tool so it installs in /usr/local/bin
+Identifier: com.github.neilmartin83.pkg.AdobeExpiryCheck
+ParentRecipe: com.github.neilmartin83.download.AdobeExpiryCheck
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: AdobeExpiryCheck
+
+Process:
+- Processor: PkgRootCreator
+  Arguments:
+    pkgdirs:
+      usr/local/bin: '0775'
+    pkgroot: '%RECIPE_CACHE_DIR%/%NAME%'
+
+- Processor: Unarchiver
+  Arguments:
+    destination_path: '%RECIPE_CACHE_DIR%/unzip'
+
+- Processor: Copier
+  Arguments:
+    destination_path: '%pkgroot%/usr/local/bin'
+    source_path: '%RECIPE_CACHE_DIR%/unzip/AdobeExpiryCheck/AdobeExpiryCheck'
+
+- Processor: com.github.mlbz521.SharedProcessors/FileMode
+  Arguments:
+    file_mode: '0755'
+    file_path: '%pkgroot%/usr/local/bin/AdobeExpiryCheck'
+
+- Processor: PkgCreator
+  Arguments:
+    pkg_request:
+      chown:
+      - group: wheel
+        path: usr
+        user: root
+      id: com.adobe.AdobeExpiryCheck
+      options: purge_ds_store
+      pkgdir: '%RECIPE_CACHE_DIR%'
+      pkgname: '%NAME%-%version%'
+      version: '%version%'

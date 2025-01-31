@@ -1,0 +1,23 @@
+Description: Downloads the latest version of LAPS for macOS.
+Identifier: com.github.neilmartin83.download.LAPSformacOS
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: LAPS-for-macOS
+  GITHUB_REPO: joshua-d-miller/LAPS-for-macOS
+
+Process:
+- Processor: GitHubReleasesInfoProvider
+  Arguments:
+    github_repo: '%GITHUB_REPO%'
+    include_prereleases: 'true'
+
+- Processor: com.github.homebysix.VersionSplitter/VersionSplitter
+  Arguments:
+    split_on: (
+
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%-%version%.zip'
+
+- Processor: EndOfCheckPhase

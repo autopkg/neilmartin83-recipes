@@ -1,0 +1,43 @@
+Description: Downloads the latest version of VCV Rack.
+Identifier: com.github.neilmartin83.download.VCVRack
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: VCV_Rack
+
+Process:
+- Processor: DeprecationWarning
+  Arguments:
+    warning_message: This recipe has been replaced by - https://github.com/autopkg/dataJAR-recipes/tree/master/VCV%20Rack%202%20Free
+
+- Processor: StopProcessingIf
+  Arguments:
+    predicate: TRUEPREDICATE
+
+- Processor: URLTextSearcher
+  Arguments:
+    re_pattern: (\/Rack-\S*-mac\.zip)
+    url: https://vcvrack.com/Rack.html
+
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%.tgz'
+    url: https://vcvrack.com/downloads%match%
+
+- Processor: EndOfCheckPhase
+
+- Processor: Unarchiver
+  Arguments:
+    archive_path: '%pathname%'
+    destination_path: '%RECIPE_CACHE_DIR%/Applications'
+    purge_destination: true
+
+- Processor: CodeSignatureVerifier
+  Arguments:
+    input_path: '%destination_path%/Rack.app'
+    requirement: identifier "com.vcvrack.rack" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VRF26934X5
+
+- Processor: Versioner
+  Arguments:
+    input_plist_path: '%destination_path%/Rack.app/Contents/Info.plist'
+    plist_version_key: CFBundleShortVersionString

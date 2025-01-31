@@ -1,0 +1,273 @@
+Description: |
+  Creates an installer pkg for Finale with the Garritan Instruments (v.26 and later) that installs properly using a management system.
+  This recipe uses the PackageRequired option and assumes you are specifying the Disk Image that contains 
+  the Finale Installer(s). For example:
+  
+  autopkg run Finale.pkg --pkg /path/to/Finale26.2.dmg
+  
+  Inspired by Anthony Reimer's Finale recipes.
+Identifier: com.github.neilmartin83.pkg.Finale
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: Finale
+
+Process:
+- Processor: PackageRequired
+
+- Processor: CodeSignatureVerifier
+  Arguments:
+    expected_authority_names:
+    - 'Developer ID Installer: MakeMusic, Inc. (77WERABCRU)'
+    - Developer ID Certification Authority
+    - Apple Root CA
+    input_path: '%PKG%/*.pkg'
+
+- Processor: FlatPkgUnpacker
+  Arguments:
+    destination_path: '%RECIPE_CACHE_DIR%/unpack'
+    flat_pkg_path: '%PKG%/*.pkg'
+
+- Processor: FileFinder
+  Arguments:
+    pattern: '%RECIPE_CACHE_DIR%/unpack/Finale*.pkg'
+
+- Processor: PkgPayloadUnpacker
+  Arguments:
+    destination_path: '%RECIPE_CACHE_DIR%/payload'
+    pkg_payload_path: '%found_filename%/Payload'
+
+- Processor: Versioner
+  Arguments:
+    input_plist_path: '%RECIPE_CACHE_DIR%/payload/Applications/Finale.app/Contents/Info.plist'
+
+- Processor: PkgRootCreator
+  Arguments:
+    pkgdirs: {}
+    pkgroot: '%RECIPE_CACHE_DIR%/pkgroot'
+
+- Processor: PkgRootCreator
+  Arguments:
+    pkgdirs: {}
+    pkgroot: '%RECIPE_CACHE_DIR%/Scripts'
+
+- Processor: Copier
+  Arguments:
+    destination_path: '%RECIPE_CACHE_DIR%/Scripts/FinaleSetup.dmg'
+    overwrite: true
+    source_path: '%PKG%'
+
+- Processor: FileCreator
+  Arguments:
+    file_content: |
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+      <array>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>visible</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_1</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>enabled</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_1</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <integer>1</integer>
+              <key>choiceAttribute</key>
+              <string>selected</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_1</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>visible</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_2</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>enabled</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_2</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <integer>-1</integer>
+              <key>choiceAttribute</key>
+              <string>selected</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_2</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>visible</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_2_1</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>enabled</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_2_1</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <integer>1</integer>
+              <key>choiceAttribute</key>
+              <string>selected</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_2_1</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>visible</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_2_2</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <false/>
+              <key>choiceAttribute</key>
+              <string>enabled</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_2_2</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <integer>0</integer>
+              <key>choiceAttribute</key>
+              <string>selected</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_2_2</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>visible</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_3</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>enabled</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_3</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <integer>0</integer>
+              <key>choiceAttribute</key>
+              <string>selected</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_3</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>visible</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_3_1</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>enabled</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_3_1</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <integer>0</integer>
+              <key>choiceAttribute</key>
+              <string>selected</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_3_1</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>visible</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_3_2</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <true/>
+              <key>choiceAttribute</key>
+              <string>enabled</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_3_2</string>
+          </dict>
+          <dict>
+              <key>attributeSetting</key>
+              <integer>0</integer>
+              <key>choiceAttribute</key>
+              <string>selected</string>
+              <key>choiceIdentifier</key>
+              <string>installer_choice_3_2</string>
+          </dict>
+      </array>
+      </plist>"
+    file_mode: '0744'
+    file_path: '%RECIPE_CACHE_DIR%/Scripts/silentInstallerChoices.plist'
+
+- Processor: FileCreator
+  Arguments:
+    file_content: |
+      #!/bin/sh
+      # Installs Finale. Assumes installer is already available in the path specified by $install_dir.
+      
+      # Determine working directory
+      install_dir=$(dirname $0)
+      
+      /usr/bin/hdiutil attach "${install_dir}/FinaleSetup.dmg" -nobrowse
+      /usr/sbin/installer -pkg "/Volumes/Finale/Install Finale.pkg" -tgt / -applyChoiceChangesXML "${install_dir}/silentInstallerChoices.plist"
+      /usr/sbin/installer -pkg "/Volumes/Finale/External/Garritan_ARIA_Player.pkg" -tgt /
+      /usr/sbin/installer -pkg "/Volumes/Finale/External/Garritan_Instruments_for_Finale.pkg" -tgt /
+      /bin/sleep 10
+      /usr/bin/hdiutil detach "/Volumes/Finale""
+    file_mode: '0755'
+    file_path: '%RECIPE_CACHE_DIR%/Scripts/postinstall'
+
+- Processor: PkgCreator
+  Arguments:
+    pkg_request:
+      id: com.makemusic.finale.pkg
+      pkgname: '%NAME%-%version%'
+      pkgroot: '%RECIPE_CACHE_DIR%/pkgroot'
+      pkgtype: flat
+      scripts: Scripts
+      version: '%version%'
+
+- Processor: PathDeleter
+  Arguments:
+    path_list:
+    - '%RECIPE_CACHE_DIR%/payload'
+    - '%RECIPE_CACHE_DIR%/unpack'
+    - '%RECIPE_CACHE_DIR%/Scripts'

@@ -1,0 +1,25 @@
+Description: Downloads the latest version of VCV Rack and creates a package.
+Identifier: com.github.neilmartin83.pkg.VCVRack
+ParentRecipe: com.github.neilmartin83.download.VCVRack
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: VCV_Rack
+
+Process:
+- Processor: DeprecationWarning
+  Arguments:
+    warning_message: This recipe has been replaced by - https://github.com/autopkg/dataJAR-recipes/tree/master/VCV%20Rack%202%20Free
+
+- Processor: StopProcessingIf
+  Arguments:
+    predicate: TRUEPREDICATE
+
+- Processor: AppPkgCreator
+  Arguments:
+    app_path: '%destination_path%/Rack.app'
+
+- Processor: PathDeleter
+  Arguments:
+    path_list:
+    - '%destination_path%'

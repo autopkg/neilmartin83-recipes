@@ -1,0 +1,27 @@
+Description: Downloads the latest version of Sinter
+Identifier: com.github.neilmartin83.download.Sinter
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: Sinter
+  INCLUDE_PRERELEASES: 'True'
+
+Process:
+- Processor: GitHubReleasesInfoProvider
+  Arguments:
+    github_repo: trailofbits/sinter
+    include_prereleases: '%INCLUDE_PRERELEASES%'
+
+- Processor: URLDownloader
+  Arguments:
+    url: '%url%'
+
+- Processor: EndOfCheckPhase
+
+- Processor: CodeSignatureVerifier
+  Arguments:
+    expected_authority_names:
+    - 'Developer ID Installer: TRAIL OF BITS INC (44WTB9L362)'
+    - Developer ID Certification Authority
+    - Apple Root CA
+    input_path: '%pathname%'

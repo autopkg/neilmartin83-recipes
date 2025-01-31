@@ -1,0 +1,25 @@
+Description: |
+  Downloads the latest version of ProfileCreator.
+  
+  Set PRERELEASE to a non-empty string to download prereleases, either
+  via Input in an override or via the -k option,
+  i.e.: `-k PRERELEASE=yes"
+Identifier: com.github.neilmartin83.download.ProfileCreator
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: ProfileCreator
+  GITHUB_REPO: ProfileCreator/ProfileCreator
+  PRERELEASE: ''
+
+Process:
+- Processor: GitHubReleasesInfoProvider
+  Arguments:
+    github_repo: '%GITHUB_REPO%'
+    include_prereleases: '%PRERELEASE%'
+
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%-%version%.dmg'
+
+- Processor: EndOfCheckPhase

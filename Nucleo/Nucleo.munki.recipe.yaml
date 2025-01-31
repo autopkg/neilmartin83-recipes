@@ -1,0 +1,41 @@
+Description: Downloads the latest version of Nucleo and imports into Munki
+Identifier: com.github.neilmartin83-recipes.munki.Nucleo
+ParentRecipe: com.github.neilmartin83-recipes.download.Nucleo
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: Nucleo
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+    - testing
+    description: Nucleo is a beautiful library of 30231 icons, and a powerful application to collect, customize and export all your icons.
+    developer: Nucleo
+    display_name: Nucleo
+    name: '%NAME%'
+    unattended_install: true
+    unattended_uninstall: true
+
+Process:
+- Processor: MunkiInstallsItemsCreator
+  Arguments:
+    faux_root: '%RECIPE_CACHE_DIR%'
+    installs_item_paths:
+    - /Applications/Nucleo.app
+
+- Processor: MunkiPkginfoMerger
+
+- Processor: DmgCreator
+  Arguments:
+    dmg_path: '%RECIPE_CACHE_DIR%/%NAME%.dmg'
+    dmg_root: '%input_path%'
+
+- Processor: MunkiImporter
+  Arguments:
+    pkg_path: '%dmg_path%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+
+- Processor: PathDeleter
+  Arguments:
+    path_list:
+    - '%RECIPE_CACHE_DIR%/Applications'

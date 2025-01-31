@@ -1,0 +1,18 @@
+Description: Downloads the latest version of RecipeBuilder and creates a package
+Identifier: com.github.neilmartin83.pkg.RecipeBuilder
+ParentRecipe: com.github.neilmartin83.download.RecipeBuilder
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: RecipeBuilder
+
+Process:
+- Processor: AppPkgCreator
+  Arguments:
+    app_path: '%RECIPE_CACHE_DIR%/unpack/*.app'
+    pkg_path: '%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg'
+
+- Processor: PathDeleter
+  Arguments:
+    path_list:
+    - '%RECIPE_CACHE_DIR%/unpack'

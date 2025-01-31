@@ -1,0 +1,32 @@
+Description: Downloads the latest version of Native Instruments Native Access and creates a package.
+Identifier: com.github.neilmartin83.pkg.NativeAccess
+ParentRecipe: com.github.neilmartin83.download.NativeAccess
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: Native_Instruments_Native_Access
+
+Process:
+- Processor: PkgRootCreator
+  Arguments:
+    pkgdirs:
+      Applications: '0775'
+    pkgroot: '%RECIPE_CACHE_DIR%/%NAME%'
+
+- Processor: Copier
+  Arguments:
+    destination_path: '%pkgroot%/Applications/Native Access.app'
+    source_path: '%pathname%/Native Access.app'
+
+- Processor: PkgCreator
+  Arguments:
+    pkg_request:
+      chown:
+      - group: admin
+        path: Applications
+        user: root
+      id: com.native-instruments.nativeaccess.pkg
+      options: purge_ds_store
+      pkgdir: '%RECIPE_CACHE_DIR%'
+      scripts: NativeAccess_Scripts
+    pkgname: '%NAME%_%version%'

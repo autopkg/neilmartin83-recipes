@@ -1,0 +1,20 @@
+Description: Downloads the latest version of Astute Manager.
+Identifier: com.github.neilmartin83.download.Astute Manager
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: AstuteManager
+  DOWNLOAD_URL: https://files.astutegraphics.com/AstuteManager.dmg
+
+Process:
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%.dmg'
+    url: '%DOWNLOAD_URL%'
+
+- Processor: EndOfCheckPhase
+
+- Processor: CodeSignatureVerifier
+  Arguments:
+    input_path: '%pathname%/Astute Manager.app'
+    requirement: identifier "com.astutegraphics.astutemanager" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = TMHZM29UJD

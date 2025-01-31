@@ -1,0 +1,26 @@
+Description: Downloads the latest version of Nucleo
+Identifier: com.github.neilmartin83-recipes.download.Nucleo
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: Nucleo
+  DOWNLOAD_URL: https://nucleoapp.com/download/mac/latest
+
+Process:
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%.zip'
+    url: '%DOWNLOAD_URL%'
+
+- Processor: EndOfCheckPhase
+
+- Processor: Unarchiver
+  Arguments:
+    archive_path: '%pathname%'
+    destination_path: '%RECIPE_CACHE_DIR%/Applications'
+    purge_destination: true
+
+- Processor: CodeSignatureVerifier
+  Arguments:
+    input_path: '%RECIPE_CACHE_DIR%/Applications/Nucleo.app'
+    requirement: identifier "co.ambercreative.nucleo" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "62YXLY7NMM"

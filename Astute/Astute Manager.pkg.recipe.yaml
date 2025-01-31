@@ -1,0 +1,36 @@
+Description: Downloads the latest version of Astute Manager and creates a package.
+Identifier: com.github.neilmartin83.pkg.Astute Manager
+ParentRecipe: com.github.neilmartin83.download.Astute Manager
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: AstuteManager
+
+Process:
+- Processor: AppDmgVersioner
+  Arguments:
+    dmg_path: '%pathname%'
+
+- Processor: PkgRootCreator
+  Arguments:
+    pkgdirs:
+      Applications: '0775'
+    pkgroot: '%RECIPE_CACHE_DIR%/%NAME%'
+
+- Processor: Copier
+  Arguments:
+    destination_path: '%pkgroot%/Applications/Astute Manager.app'
+    source_path: '%pathname%/Astute Manager.app'
+
+- Processor: PkgCreator
+  Arguments:
+    pkg_request:
+      chown:
+      - group: admin
+        path: Applications
+        user: root
+      id: com.astutegraphics.astutemanager.pkg
+      options: purge_ds_store
+      pkgdir: '%RECIPE_CACHE_DIR%'
+      pkgname: '%NAME%-%version%'
+      scripts: package_scripts

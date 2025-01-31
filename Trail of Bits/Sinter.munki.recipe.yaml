@@ -1,0 +1,22 @@
+Description: Downloads the latest version of Sinter and imports into Munki
+Identifier: com.github.neilmartin83.munki.Sinter
+ParentRecipe: com.github.neilmartin83.download.Sinter
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: Sinter
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+    - testing
+    description: Sinter is a 100% user-mode endpoint security agent for macOS 10.15 and above, written in Swift.
+    developer: Trail of Bits
+    display_name: Sinter
+    name: '%NAME%'
+    unattended_install: true
+
+Process:
+- Processor: MunkiImporter
+  Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'

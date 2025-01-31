@@ -1,0 +1,25 @@
+Description: Downloads the latest version of DrawBot.
+Identifier: com.github.neilmartin83.download.DrawBot
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: DrawBot
+  DOWNLOAD_URL: https://github.com/typemytype/drawbot/releases/latest/download/DrawBot.dmg
+
+Process:
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%.dmg'
+    url: '%DOWNLOAD_URL%'
+
+- Processor: EndOfCheckPhase
+
+- Processor: CodeSignatureVerifier
+  Arguments:
+    input_path: '%pathname%/DrawBot.app'
+    requirement: identifier "com.drawbot" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = NNVFASZ82V
+
+- Processor: Versioner
+  Arguments:
+    input_plist_path: '%pathname%/DrawBot.app/Contents/Info.plist'
+    plist_version_key: CFBundleShortVersionString

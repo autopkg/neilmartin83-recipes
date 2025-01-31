@@ -1,0 +1,23 @@
+Description: Downloads the latest version of Nucleo and creates a package
+Identifier: com.github.neilmartin83-recipes.pkg.Nucleo
+ParentRecipe: com.github.neilmartin83-recipes.download.Nucleo
+MinimumVersion: 0.5.0
+
+Input:
+  NAME: Nucleo
+
+Process:
+- Processor: Versioner
+  Arguments:
+    input_plist_path: '%RECIPE_CACHE_DIR%/Applications/%NAME%.app/Contents/Info.plist'
+    plist_version_key: CFBundleVersion
+
+- Processor: AppPkgCreator
+  Arguments:
+    app_path: '%RECIPE_CACHE_DIR%/Applications/%NAME%.app'
+    pkg_path: '%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg'
+
+- Processor: PathDeleter
+  Arguments:
+    path_list:
+    - '%RECIPE_CACHE_DIR%/Applications'

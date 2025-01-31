@@ -1,0 +1,21 @@
+Description: Downloads the latest version of ProfileCreator and creates a package.
+Identifier: com.github.neilmartin83.pkg.ProfileCreator
+ParentRecipe: com.github.neilmartin83.download.ProfileCreator
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: ProfileCreator
+
+Process:
+- Processor: com.github.homebysix.VersionSplitter/VersionSplitter
+  Arguments:
+    split_on: -beta
+
+- Processor: AppPkgCreator
+  Arguments:
+    app_path: '%destination_path%ProfileCreator.app'
+
+- Processor: PathDeleter
+  Arguments:
+    path_list:
+    - '%RECIPE_CACHE_DIR%/Applications'
