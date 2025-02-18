@@ -1,0 +1,5 @@
+Description: Recipe stub for any Processors in this directory.
+Identifier: com.github.neilmartin83.SharedProcessors
+Input: {}
+MinimumVersion: "2.3"
+Process: []
