@@ -48,6 +48,11 @@ class AddXMLTagProcessor(Processor):
         if parent is None:
             raise ProcessorError(f"Parent element not found for XPath: {parent_xpath}")
         
+        # Check if the tag with the same value already exists
+        for child in parent.findall(new_element):
+            if child.text == text:
+                raise ProcessorError(f"Element <{new_element}> with value '{text}' already exists in {parent_xpath}")
+        
         # Create the new element
         new_tag = ET.Element(new_element)
         new_tag.text = text

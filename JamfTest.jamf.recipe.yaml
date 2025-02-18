@@ -3,12 +3,12 @@ Identifier: com.github.neilmartin83.Jamf
 MinimumVersion: 0.2.0
 
 Input:
-  ROLE: Test Role
+  VALUE: Test Value
 
 Process:
 - Processor: com.github.neilmartin83.SharedProcessors/AddXMLTagProcessor
   Arguments:
-    input_path: "/Users/Shared/ea.xml"
-    parent_xpath: "computer_extension_attribute/input_type/popup_choices"
+    input_path: "/Users/Shared/testfile.xml"
+    parent_xpath: .//popup_choices/
     new_element: choice
-    text: "%ROLE%"
+    text: "%VALUE%"
