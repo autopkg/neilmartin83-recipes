@@ -3,12 +3,32 @@ Identifier: com.github.neilmartin83.Jamf
 MinimumVersion: 0.2.0
 
 Input:
-  VALUE: Test Value
+  OBJECT_NAME: A Name
+  OBJECT_TYPE: computer_extension_attribute_classic
+  VALUE: Hello there!
 
 Process:
+
+- Processor: com.github.grahampugh.jamf-upload.processors/JamfObjectReader
+  Arguments:
+    object_name: "Machine Role"
+    object_type: computer_extension_attribute_classic
+    output_path: "%RECIPE_CACHE_DIR%"
+
+- Processor: FileFinder
+  Arguments:
+    pattern: "%RECIPE_CACHE_DIR%/*.xml"
+
 - Processor: com.github.neilmartin83.SharedProcessors/AddXMLTagProcessor
   Arguments:
-    input_path: "/Users/Shared/testfile.xml"
-    parent_xpath: .//popup_choices/
+    input_path: "%found_filename%"
+    parent_xpath: .//popup_choices
     new_element: choice
     text: "%VALUE%"
+
+- Processor: com.github.grahampugh.jamf-upload.processors/JamfClassicAPIObjectUploader
+  Arguments:
+    object_name: "%OBJECT_NAME%"
+    object_template: "%found_filename%"
+    object_type: "%OBJECT_TYPE%"
+    replace_object: "True"
