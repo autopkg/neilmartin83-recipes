@@ -1,7 +1,7 @@
 Description: Downloads the latest version of Sinter and imports into Munki
 Identifier: com.github.neilmartin83.munki.Sinter
 ParentRecipe: com.github.neilmartin83.download.Sinter
-MinimumVersion: 0.5.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: Sinter

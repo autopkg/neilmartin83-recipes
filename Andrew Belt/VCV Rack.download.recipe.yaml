@@ -1,6 +1,6 @@
 Description: Downloads the latest version of VCV Rack.
 Identifier: com.github.neilmartin83.download.VCVRack
-MinimumVersion: 1.0.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: VCV_Rack

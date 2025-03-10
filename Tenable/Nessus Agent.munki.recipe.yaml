@@ -1,7 +1,7 @@
 Description: Downloads the latest version of Nessus Agent and imports into Munki
 Identifier: com.github.neilmartin83-recipes.munki.Nessus Agent
 ParentRecipe: com.github.neilmartin83-recipes.pkg.Nessus Agent
-MinimumVersion: 0.5.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: Nessus Agent

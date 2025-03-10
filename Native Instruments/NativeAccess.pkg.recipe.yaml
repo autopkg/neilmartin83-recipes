@@ -1,7 +1,7 @@
 Description: Downloads the latest version of Native Instruments Native Access and creates a package.
 Identifier: com.github.neilmartin83.pkg.NativeAccess
 ParentRecipe: com.github.neilmartin83.download.NativeAccess
-MinimumVersion: 1.0.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: Native_Instruments_Native_Access

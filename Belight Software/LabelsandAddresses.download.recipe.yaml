@@ -1,6 +1,6 @@
 Description: Downloads the latest version of Labels and Addresses.
 Identifier: com.github.neilmartin83.download.LabelsandAddresses
-MinimumVersion: 1.0.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: LabelsandAddresses

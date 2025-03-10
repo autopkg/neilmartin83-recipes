@@ -1,7 +1,7 @@
 Description: Downloads the latest version of RecipeBuilder and imports into Munki
 Identifier: com.github.neilmartin83.munki.RecipeBuilder
 ParentRecipe: com.github.neilmartin83.download.RecipeBuilder
-MinimumVersion: 0.5.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: RecipeBuilder

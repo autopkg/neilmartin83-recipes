@@ -1,6 +1,6 @@
 Description: Downloads the Adobe Device License Expiry Check tool - https://helpx.adobe.com/enterprise/kb/volume-license-expiration-check.html
 Identifier: com.github.neilmartin83.download.AdobeExpiryCheck
-MinimumVersion: 0.5.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: AdobeExpiryCheck

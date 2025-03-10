@@ -1,7 +1,7 @@
 Description: Downloads the latest version of Astute Manager and creates a package.
 Identifier: com.github.neilmartin83.pkg.Astute Manager
 ParentRecipe: com.github.neilmartin83.download.Astute Manager
-MinimumVersion: 1.0.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: AstuteManager

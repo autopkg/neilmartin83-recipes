@@ -7,7 +7,7 @@ Description: |
   
   Inspired by Anthony Reimer's Finale recipes.
 Identifier: com.github.neilmartin83.pkg.Finale
-MinimumVersion: 0.5.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: Finale

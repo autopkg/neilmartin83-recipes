@@ -1,7 +1,7 @@
 Description: Downloads the latest version of Fanny and creates a package
 Identifier: com.github.neilmartin83.pkg.Fanny
 ParentRecipe: com.github.neilmartin83.download.Fanny
-MinimumVersion: 0.5.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: Fanny

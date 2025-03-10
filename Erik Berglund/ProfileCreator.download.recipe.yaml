@@ -5,7 +5,7 @@ Description: |
   via Input in an override or via the -k option,
   i.e.: `-k PRERELEASE=yes"
 Identifier: com.github.neilmartin83.download.ProfileCreator
-MinimumVersion: 1.0.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: ProfileCreator

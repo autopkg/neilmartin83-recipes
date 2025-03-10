@@ -1,7 +1,7 @@
 Description: Packages the Adobe Device License Expiry Check tool so it installs in /usr/local/bin
 Identifier: com.github.neilmartin83.pkg.AdobeExpiryCheck
 ParentRecipe: com.github.neilmartin83.download.AdobeExpiryCheck
-MinimumVersion: 0.5.0
+MinimumVersion: "2.3"
 
 Input:
   NAME: AdobeExpiryCheck
