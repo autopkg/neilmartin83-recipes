@@ -31,6 +31,5 @@ Process:
         path: Applications
         user: root
       id: '%BUNDLE_ID%'
-      options: purge_ds_store
       pkgdir: '%RECIPE_CACHE_DIR%'
       pkgname: '%NAME%-%version%'

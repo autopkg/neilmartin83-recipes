@@ -26,7 +26,6 @@ Process:
         path: Applications
         user: root
       id: com.native-instruments.nativeaccess.pkg
-      options: purge_ds_store
       pkgdir: '%RECIPE_CACHE_DIR%'
       scripts: NativeAccess_Scripts
     pkgname: '%NAME%_%version%'
