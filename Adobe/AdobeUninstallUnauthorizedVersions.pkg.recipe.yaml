@@ -31,7 +31,6 @@ Process:
         path: private
         user: root
       id: com.adobe.AdobeUninstallUnauthorizedVersions
-      options: purge_ds_store
       pkgdir: '%RECIPE_CACHE_DIR%'
       pkgname: '%NAME%'
       scripts: AdobeUninstallUnauthorizedVersions_Scripts

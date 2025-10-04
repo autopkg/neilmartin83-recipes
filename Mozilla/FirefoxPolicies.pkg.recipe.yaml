@@ -59,6 +59,5 @@ Process:
         path: Applications
         user: root
       id: '%PKG_ID%'
-      options: purge_ds_store
       pkgdir: '%RECIPE_CACHE_DIR%'
       pkgname: '%NAME%_%ORG_NAME%-%version%'

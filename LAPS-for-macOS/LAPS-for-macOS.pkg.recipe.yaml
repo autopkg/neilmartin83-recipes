@@ -25,6 +25,5 @@ Process:
         path: Applications
         user: root
       id: com.github.joshua-d-miller.LAPS-for-macOS
-      options: purge_ds_store
       pkgdir: '%RECIPE_CACHE_DIR%'
       pkgname: '%NAME%-%version%'
