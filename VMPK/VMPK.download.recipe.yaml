@@ -14,3 +14,5 @@ Process:
 - Processor: URLDownloader
   Arguments:
     filename: '%NAME%.dmg'
+
+- Processor: EndOfCheckPhase
